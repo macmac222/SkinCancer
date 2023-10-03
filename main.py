@@ -45,7 +45,7 @@ st.sidebar.write("""
 - Learning rate: 0.001
 - Number of epochs: 25
 (Early stopping)
-- Test accuracy: ~97%
+- Test accuracy: ~88%
 
 """)
 
