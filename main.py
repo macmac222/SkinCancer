@@ -1,6 +1,6 @@
 import streamlit as st
 from PIL import Image
-from torchmetrics.classification import BinaryConfusionMatrix
+'from torchmetrics.classification import BinaryConfusionMatrix
 import torch
 from torch import nn, optim, tensor
 from torchvision import datasets, transforms, models
