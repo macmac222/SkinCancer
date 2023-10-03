@@ -25,6 +25,9 @@ Using CNN to classify whether a skin mole is benign or malignant
 
 st.sidebar.write("# CNN models")
 st.sidebar.write("""
+## Training datasets
+https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign
+
 ## Result 1:
 
 - Used model: Pretrained VGG16
