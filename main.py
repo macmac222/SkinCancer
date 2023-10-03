@@ -28,7 +28,7 @@ st.sidebar.write("""
 ## Training datasets
 https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign
 
-## Result 1:
+## Result 1
 
 - Used model: Pretrained VGG16
 - Optimiser: SGD with scheduler
@@ -39,7 +39,7 @@ https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign
 (Early stopping)
 - Test accuracy: ~89%
 
-## Result 2:
+## Result 2
 
 - Used model: Pretrained AlexNet
 - Optimiser: SGD with scheduler
