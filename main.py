@@ -25,7 +25,7 @@ Using CNN to classify whether a skin mole is benign or malignant
 
 st.sidebar.write("# CNN models")
 st.sidebar.write("""
-## Result 1:
+## Result 1
 
 - Used model: Pretrained VGG16
 - Optimiser: SGD with scheduler
@@ -36,7 +36,7 @@ st.sidebar.write("""
 (Early stopping)
 - Test accuracy: ~89%
 
-## Result 2:
+## Result 2
 
 - Used model: Pretrained AlexNet
 - Optimiser: SGD with scheduler
@@ -45,7 +45,7 @@ st.sidebar.write("""
 - Learning rate: 0.001
 - Number of epochs: 25
 (Early stopping)
-- Test accuracy: ~97%
+- Test accuracy: ~86%
 
 """)
 
