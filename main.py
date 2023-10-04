@@ -1,6 +1,6 @@
 import streamlit as st
 from PIL import Image
-#from torchmetrics.classification import BinaryConfusionMatrix
+from torchmetrics.classification import BinaryConfusionMatrix
 import torch
 from torch import nn, optim, tensor
 from torchvision import datasets, transforms, models
@@ -25,10 +25,7 @@ Using CNN to classify whether a skin mole is benign or malignant
 
 st.sidebar.write("# CNN models")
 st.sidebar.write("""
-## Training datasets
-https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign
-
-## Result 1
+## Result 1:
 
 - Used model: Pretrained VGG16
 - Optimiser: SGD with scheduler
@@ -39,7 +36,7 @@ https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign
 (Early stopping)
 - Test accuracy: ~89%
 
-## Result 2
+## Result 2:
 
 - Used model: Pretrained AlexNet
 - Optimiser: SGD with scheduler
@@ -48,7 +45,7 @@ https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign
 - Learning rate: 0.001
 - Number of epochs: 25
 (Early stopping)
-- Test accuracy: ~88%
+- Test accuracy: ~97%
 
 """)
 
@@ -88,8 +85,7 @@ def predict1(image):
         )])
 
     # load the image, pre-process it, and make predictions
-    img = Image.open(image)
-    img = transform(img).unsqueeze(0)
+    img = transform(image).unsqueeze(0)
     img = Variable(img)
     vgg16.eval()
     out = vgg16(img)
@@ -127,8 +123,7 @@ def predict2(image):
         )])
 
     # Load the image, pre-process it, and make predictions
-    img = Image.open(image)
-    img = transform(img).unsqueeze(0)
+    img = transform(image).unsqueeze(0)
     img = Variable(img)
     alexnet.eval()
     out = alexnet(img)
@@ -138,23 +133,25 @@ def predict2(image):
 
 if uploaded is not None:
     # display image that user uploaded
-    image = Image.open(uploaded)
-    st.image(image, caption = 'Uploaded Image', use_column_width = True)
-    st.write("")
-    st.write("Making predictions ...")
+    loaded_image = Image.open(uploaded)
+else:
+    loaded_image = Image.open("default_malignant.jpg")
 
-    label1 = predict1(uploaded)
-    if label1 == 1:
-        result1 = "MALIGNANT"
-    else:
-        result1 = "BENIGN"
-    st.subheader("Result 1 (VGG16): ")
-    st.write(result1)
+st.image(loaded_image, caption = 'Uploaded Image', use_column_width = True)
+st.write("")
+st.write("Making predictions ...")
+label1 = predict1(loaded_image)
+if label1 == 1:
+    result1 = "MALIGNANT"
+else:
+    result1 = "BENIGN"
+st.subheader("Result 1 (VGG16): ")
+st.write(result1)
 
-    label2 = predict2(uploaded)
-    if label2 == 1:
-        result2 = "MALIGNANT"
-    else:
-        result2 = "BENIGN"
-    st.subheader("Result 2 (AlexNet): ")
-    st.write(result2)
+label2 = predict2(loaded_image)
+if label2 == 1:
+    result2 = "MALIGNANT"
+else:
+    result2 = "BENIGN"
+st.subheader("Result 2 (AlexNet): ")
+st.write(result2)
