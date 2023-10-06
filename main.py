@@ -1,3 +1,5 @@
+import random
+
 import streamlit as st
 from PIL import Image
 from torchmetrics.classification import BinaryConfusionMatrix
@@ -135,7 +137,8 @@ if uploaded is not None:
     # display image that user uploaded
     loaded_image = Image.open(uploaded)
 else:
-    loaded_image = Image.open("default_malignant.jpg")
+    num = random.randint(1, 15)
+    loaded_image = Image.open(f"image{num}.jpg")
 
 st.image(loaded_image, caption = 'Uploaded Image', use_column_width = True)
 st.write("")
