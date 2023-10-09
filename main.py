@@ -137,7 +137,7 @@ if uploaded is not None:
     # display image that user uploaded
     loaded_image = Image.open(uploaded)
 else:
-    num = random.randint(1, 15)
+    num = random.randint(1, 5)
     loaded_image = Image.open(f"image{num}.jpg")
 
 st.image(loaded_image, caption = 'Uploaded Image', use_column_width = True)
